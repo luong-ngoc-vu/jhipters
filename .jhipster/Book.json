@@ -1,0 +1,53 @@
+{
+  "name": "Book",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "releaseDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "sponsor",
+      "otherEntityRelationshipName": "book",
+      "relationshipName": "sponsor",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "author",
+      "otherEntityRelationshipName": "book",
+      "relationshipName": "author",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200815042402",
+  "entityTableName": "book",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

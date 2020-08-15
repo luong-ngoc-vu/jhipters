@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="book">
+            <h2><span jhiTranslate="myappApp.book.detail.title">Book</span> {{ book.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="myappApp.book.title">Title</span></dt>
+                <dd>
+                    <span>{{ book.title }}</span>
+                </dd>
+                <dt><span jhiTranslate="myappApp.book.description">Description</span></dt>
+                <dd>
+                    <span>{{ book.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="myappApp.book.content">Content</span></dt>
+                <dd>
+                    <span>{{ book.content }}</span>
+                </dd>
+                <dt><span jhiTranslate="myappApp.book.releaseDate">Release Date</span></dt>
+                <dd>
+                    <span>{{ book.releaseDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="myappApp.book.price">Price</span></dt>
+                <dd>
+                    <span>{{ book.price }}</span>
+                </dd>
+                <dt><span jhiTranslate="myappApp.book.sponsor">Sponsor</span></dt>
+                <dd>
+                    <span *ngFor="let sponsor of book.sponsors; let last = last">
+                        <a [routerLink]="['/sponsor', sponsor?.id, 'view']">{{ sponsor.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="myappApp.book.author">Author</span></dt>
+                <dd>
+                    <div *ngIf="book.authorId">
+                        <a [routerLink]="['/author', book.authorId, 'view']">{{ book.authorId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/book', book.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

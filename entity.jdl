@@ -1,0 +1,30 @@
+entity Book {
+	title String,
+    description String,
+    content String,
+    releaseDate LocalDate,
+    price BigDecimal
+}
+
+entity Author {
+	firstName String,
+    lastName String,
+    jobTitle String,
+    dateOfBirth LocalDate
+}
+
+entity Sponsor {
+	name String,
+    phone String
+}
+
+relationship OneToMany {
+	Author{book} to Book{author}
+}
+
+relationship ManyToMany {
+	Book{sponsor} to Sponsor{book}
+}
+
+dto all with mapstruct
+service all with serviceClass
